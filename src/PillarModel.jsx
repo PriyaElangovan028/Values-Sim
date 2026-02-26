@@ -4,7 +4,7 @@ import { useFrame } from "@react-three/fiber"
 
 export default function PillarModel({ position }) {
   const ref = useRef()
-  const { scene } = useGLTF("/models/pillar/pillar.gltf")
+  const { scene } = useGLTF("/models/pillar/stone_pillar.glb")
 
   scene.traverse((child) => {
   if (child.isMesh) {
@@ -30,5 +30,3 @@ export default function PillarModel({ position }) {
     />
   )
 }
-
-useGLTF.preload("/models/pillar/pillar.gltf")
