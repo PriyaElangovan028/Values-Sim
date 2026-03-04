@@ -1,16 +1,18 @@
 import { useGLTF, Instances, Instance, Environment, Cloud, useTexture } from "@react-three/drei"
 import { useMemo } from "react"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { useFrame } from "@react-three/fiber"
 import * as THREE from "three"
 import MythicalPortal from "./components/MythicalPortal"
+import LeadingChangeScene from "./pages/LeadingChangeScene"
 
 // Preload
 useGLTF.preload("/models/pillar/stone_pillar.glb")
 
 
-function PortalPillars() {
+function PortalPillars({ onSelectScene }) {
     const { nodes, materials } = useGLTF("/models/pillar/stone_pillar.glb")
+
 
     const ringRef = useRef()
     const iconRef = useRef()
@@ -31,8 +33,13 @@ function PortalPillars() {
         [11, -2, 11],
     ]
 
+    const sceneKeys = [
+        "leadingChange",
+
+    ]
+
     const portalActions = [
-        () => console.log("Portal 1"),
+        () => setCurrentScene("leadingChange"),
         () => console.log("Portal 2"),
         () => console.log("Portal 3"),
         () => console.log("Portal 4"),
@@ -72,7 +79,7 @@ function PortalPillars() {
                     <MythicalPortal
                         key={i}
                         position={[pos[0] + 0.1, 8, pos[2]]}
-                        onClick={portalActions[i]}
+                        onClick={() => onSelectScene(sceneKeys[i])}
                     />
                 ))}
             </group>
@@ -97,6 +104,11 @@ function PortalPillars() {
 }
 
 export default function Scene() {
+    const [currentScene, setCurrentScene] = useState("portalHub")
+    const scenes = {
+        leadingChange: <LeadingChangeScene goBack={() => setCurrentScene("portalHub")} />,
+
+    }
     return (
         <>
             <ambientLight intensity={0.8} />
@@ -111,7 +123,11 @@ export default function Scene() {
             <Cloud position={[20, 8, 10]} speed={0} opacity={0.4} />
             <Cloud position={[-25, 7, -15]} speed={0} opacity={0.5} />
 
-            <PortalPillars />
+            {currentScene === "portalHub" ? (
+                <PortalPillars onSelectScene={setCurrentScene} />
+            ) : (
+                scenes[currentScene]
+            )}
         </>
     )
 }

@@ -5,8 +5,9 @@ import * as THREE from "three"
 export default function MythicalPortal({ position, onClick }) {
   const ref = useRef()
   const matRef = useRef()
+  
 
-  const texture = useTexture("/textures/blue_portal.png")
+  const texture = useTexture("/textures/gold_portal.png")
   texture.colorSpace = THREE.SRGBColorSpace
   texture.flipY = true
 
@@ -22,10 +23,12 @@ export default function MythicalPortal({ position, onClick }) {
       onPointerOver={() => {
         document.body.style.cursor = "pointer"
         matRef.current.color.set("#66e0ff")
+        ref.current.position.y = position[0] + 1
       }}
       onPointerOut={() => {
         document.body.style.cursor = "default"
         matRef.current.color.set("#3aa7ff")
+        ref.current.position.y = position[1]
       }}
     >
       <planeGeometry args={[3.2, 3.2]} />
