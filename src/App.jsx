@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber"
 import Scene from "./Scene"
 import LeadingChangeScene from "./pages/LeadingChangeScene"
 
+
 export default function App() {
   return (
     <Canvas
@@ -15,6 +16,6 @@ export default function App() {
       dpr={[1, 1.5]}
     >
       <Scene />
-    </Canvas>
-  )
+    </Canvas>)
+
 }
