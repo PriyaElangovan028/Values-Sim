@@ -1,6 +1,7 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Float, Text, Environment } from "@react-three/drei";
+import { ManagerAvatar } from "../components/ManagerAvatar";
 
 function TeamMember(props) {
   return (
@@ -13,19 +14,7 @@ function TeamMember(props) {
   );
 }
 
-function Leader() {
-  return (
-    <Float speed={3} rotationIntensity={2} floatIntensity={3}>
-      <mesh position={[0, 1.5, 0]}>
-        <sphereGeometry args={[0.7, 32, 32]} />
-        <meshStandardMaterial color="orange" />
-      </mesh>
-      <Text position={[0, 2.8, 0]} fontSize={0.4} color="white" anchorX="center">
-        Leader
-      </Text>
-    </Float>
-  );
-}
+
 
 export default function LeadingChangeScene({ goBack }) {
   return (
@@ -34,7 +23,7 @@ export default function LeadingChangeScene({ goBack }) {
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
 
-        <Leader />
+        <ManagerAvatar position={[0, 0, 0]} />
 
         <TeamMember position={[-2, 0, 0]} color="skyblue" />
         <TeamMember position={[2, 0, 0]} color="lightgreen" />
