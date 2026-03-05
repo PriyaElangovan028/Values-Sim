@@ -122,25 +122,25 @@ export default function LeadingChangeScene({ goBack }) {
 
   const [managerThought, setManagerThought] = useState("");
   const [traineeThought, setTraineeThought] = useState("");
-
+  
 
   const script = [
-    { time: 0, manager: "Presenting", managerThought: "We must implement this new policy immediately." },
+  { time: 0, manager: "Presenting", managerThought: "We must implement this new policy immediately." },
 
-    { time: 4, manager: "Idle", managerThought: "" },
+  { time: 4, manager: "Idle", managerThought: "" },
 
-    { time: 5, trainee: "LookingAround", traineeThought: "This change feels risky..." },
+  { time: 5, trainee: "LookingAround", traineeThought: "This change feels risky..." },
 
-    { time: 7, trainee: "Idle", traineeThought: "" },
+  { time: 7, trainee: "Idle", traineeThought: "" },
 
-    { time: 8, manager: "SayingNo", managerThought: "Resistance won't help." },
+  { time: 8, manager: "SayingNo", managerThought: "Resistance won't help." },
 
-    { time: 10, manager: "Idle", managerThought: "" },
+  { time: 10, manager: "Idle", managerThought: "" },
 
-    { time: 11, trainee: "SayingNo", traineeThought: "I guess my concerns don't matter..." },
+  { time: 11, trainee: "SayingNo", traineeThought: "I guess my concerns don't matter..." },
 
-    { time: 14, trainee: "Idle", traineeThought: "" }
-  ];
+  { time: 14, trainee: "Idle", traineeThought: "" }
+];
 
 
 
