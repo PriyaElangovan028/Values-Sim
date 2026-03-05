@@ -23,12 +23,12 @@ export default function MythicalPortal({ position, onClick }) {
       onPointerOver={() => {
         document.body.style.cursor = "pointer"
         matRef.current.color.set("#66e0ff")
-        ref.current.position.y = position[0] + 1
+        
       }}
       onPointerOut={() => {
         document.body.style.cursor = "default"
         matRef.current.color.set("#3aa7ff")
-        ref.current.position.y = position[1]
+        
       }}
     >
       <planeGeometry args={[3.2, 3.2]} />

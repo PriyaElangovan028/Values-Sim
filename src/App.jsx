@@ -12,7 +12,7 @@ export default function App() {
       onCreated={({ scene }) => {
         scene.background = new THREE.Color("#87CEEB") // Sky blue
       }}
-      frameloop="demand"
+      frameloop="always"
       dpr={[1, 1.5]}
     >
       <Scene />

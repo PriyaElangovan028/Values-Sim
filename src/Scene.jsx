@@ -45,16 +45,11 @@ function PortalPillars({ onSelectScene }) {
         () => console.log("Portal 4"),
         () => console.log("Portal 5"),
     ]
-    useFrame((state) => {
-        const t = state.clock.elapsedTime
-
-        // Light CPU animation
-        ringRef.current.rotation.y += 0.01
-
-        iconRef.current.children.forEach((child, i) => {
-            child.position.y = 8 + Math.sin(t + i) * 0.15
-        })
-    })
+   
+    useFrame((state) => { const t = state.clock.elapsedTime 
+        
+        
+        iconRef.current.children.forEach((child, i) => { child.position.y = 8 + Math.sin(t + i) * 0.15 }) })
 
     return (
         <>
