@@ -3,6 +3,10 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Float, Text, Environment } from "@react-three/drei";
 import { ManagerAvatar } from "../components/ManagerAvatar";
 import { useState } from "react";
+import { TraineeAvatar } from "../components/TraineeAvatar";
+import "../styles/LeadingChange.css"
+
+
 
 function TeamMember(props) {
   return (
@@ -19,7 +23,7 @@ function TeamMember(props) {
 
 export default function LeadingChangeScene({ goBack }) {
 
-  const [allAnimation, setAllAnimation] = useState([
+  const [allManagerAnimation, setAllManagerAnimation] = useState([
     "Armature.003|mixamo.com|Layer0",
     "DeterminedNod",
     "Explaining",
@@ -33,29 +37,47 @@ export default function LeadingChangeScene({ goBack }) {
     "Victory",
     "VictoryIdle"
   ]);
-  
-  const [currentAnimation, setCurrentAnimation] = useState("Idle");
+
+  const [allTraineeAnimation, setAllTraineeAnimation] = useState([
+    "Idle",
+    "LookingAround",
+    "Presenting",
+    "SayingNo",
+    "TalkingOneHand",
+    "ThoughtfulHeadNod"
+  ]);
+
+  const [currentTraineeAnimation, setCurrentTraineeAnimation] = useState("Idle");
+
+  const [currentManagerAnimation, setCurrentManagerAnimation] = useState("Idle");
   return (
-    <>
-      
+
+
+    <div className="canvas-container">
+
+      <Canvas>
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
 
-        <ManagerAvatar position={[0, 0, 0]} currentAnimation={currentAnimation} />
+        <ManagerAvatar position={[0, -10, -5]} currentAnimation={currentManagerAnimation} />
 
-        <TeamMember position={[-2, 0, 0]} color="skyblue" onClick={() => setCurrentAnimation("TalkingOpenHands")}/>
-        <TeamMember position={[2, 0, 0]} color="lightgreen" />
-        <TeamMember position={[0, 0, -2]} color="pink" />
+        <TraineeAvatar position={[9, -10, -3]} rotation = {[0, -45.25, 0]} currentAnimation={currentTraineeAnimation} />
 
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0]} >
-          <planeGeometry args={[20, 20]} />
-          <meshStandardMaterial color="#222" />
-          
-        </mesh>
+        <TeamMember position={[-2, -3, 0]} color="skyblue" onClick={() => setCurrentManagerAnimation("TalkingOpenHands")} />
+       
 
-        
-        <Environment preset="city" />
-      
-    </>
+       
+
+
+
+
+      </Canvas>
+
+    </div>
+
+
+
+
+
   );
 }
