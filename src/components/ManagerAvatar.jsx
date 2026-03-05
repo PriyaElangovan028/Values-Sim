@@ -1,10 +1,16 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 
 export function ManagerAvatar(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/models/Avatar/teacher.glb')
   const { actions } = useAnimations(animations, group)
+  console.log('actions:', actions)
+
+  useEffect(() => {
+     actions['SayingNo'].reset().fadeIn(0.5).play()
+     console.log("Animation 'SayingNo' started playing.")
+    }, [])
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
